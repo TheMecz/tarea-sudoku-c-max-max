@@ -38,17 +38,42 @@ void check(MATRIX &matrix,MATRIX &checkmatrix ){
 }
 
 //Cuenta cuantas veces se repite el numero n en la fila i
-int count_rows(MATRIX &matrix, int n, int i){
-   // Implementa esta función
+int count_rows(MATRIX &matrix, int n, int i) {
+    int cont=0;
+    // Implementa esta función
+    for ( size_t j=0; j<matrix[i].size(); j++) {
+        if(matrix[i][j] == n){
+            cont++;
+        }
+    }
+    return cont;
 }
 //Cuenta cuantas veces se repite el numero n en region (i-1, j-1) a (i+1, j+1)
 int count_square(MATRIX &matrix, int n, int i, int j){
     // Implementa esta función
+    int cont=0;
+    for(size_t k=i-1
+            ; k<=i+1; i++){
+        for(size_t l=j-1; l<=j+1; j++){
+            if(matrix[k][l] == n){
+                cont++;
+            }
+        }
+    }
+    return cont;
 }
 
 //Cuenta cuantas veces se repite el numero n en la columna j
 int count_cols(MATRIX &matrix, int n, int j){
     // Implementa esta función
+    int cont=0;
+    // Implementa esta función
+    for ( size_t i=0; i<matrix.size(); i++) {
+        if(matrix[i][j] == n){
+            cont++;
+        }
+    }
+    return cont;
 }
 
 //Crea una matrix de 9 filas y 9 columnas.
@@ -57,6 +82,7 @@ int count_cols(MATRIX &matrix, int n, int j){
 void create(MATRIX &matrix, bool is_random){
     srand(time(nullptr));
     int filas=9, columnas =9;
+    int r;
    for(int i=0;i<filas;i++){
        vector<int> fil = vector<int>(columnas,0);
        if(is_random == true){
@@ -76,13 +102,13 @@ void print(MATRIX matrix, MATRIX checkmatrix){
    for(int i=0;i<matrix.size();i++){
        for(int j=0; j<matrix[i].size(); j++){
            if(checkmatrix[i][j] == 1){
-               cout << "\033[1;41m "<<matrix[i][j]<<" \033[0m\t";
+               cout << "\033[1;41m "<<matrix[i][j]<<" \033[0m\t\t";
            }else if(checkmatrix[i][j] == 2){
-               cout << "\033[1;44m "<<matrix[i][j]<<" \033[0m\t";
+               cout << "\033[1;44m "<<matrix[i][j]<<" \033[0m\t\t";
            }else if(checkmatrix[i][j] == 3){
-               cout << "\033[1;42m "<<matrix[i][j]<<" \033[0m\t";
+               cout << "\033[1;42m "<<matrix[i][j]<<" \033[0m\t\t";
            }else{
-               cout<<matrix[i][j]<<"\t";
+               cout<<matrix[i][j]<<"\t\t";
            }
        }
        cout<<endl;
